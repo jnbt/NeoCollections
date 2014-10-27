@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>NeoCollections by jnbt</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>NeoCollections</h1>
+        <p>NeoCollections is a simple class library which allows AOT-safe iterations in Unity3D</p>
+
+        <p class="view"><a href="https://github.com/jnbt/NeoCollections">View the Project on GitHub <small>jnbt/NeoCollections</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jnbt/NeoCollections/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jnbt/NeoCollections/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jnbt/NeoCollections">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="neocollection-a-class-library-for-aot-safe-collection-for-unity3d" class="anchor" href="#neocollection-a-class-library-for-aot-safe-collection-for-unity3d"><span class="octicon octicon-link"></span></a>NeoCollection: A class library for AOT-safe collection for <code>Unity3D</code>
+</h1>
+
+<p>NeoCollection is a simple class library which allows AOT-safe iterations in <a href="http://unity3d.com">Unity3D</a>. This may sound strange as
+<a href="http://www.mono-project.com">Mono</a> / <code>C#</code> supports standard collection classes and the famous <code>foreach</code> loop, but
+these feature sometime break on iOS. (Further information about this can be found <a href="http://forum.unity3d.com/threads/system-string-doesnt-implement-interface-system-collections-ienumerator-crash.168019/">here</a>
+and <a href="http://www.makegamessa.com/discussion/1493/its-official-foreach-is-bad-in-unity/p1">here</a>).</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>If you don't have access to <a href="http://msdn.microsoft.com/de-de/vstudio">Microsoft VisualStudio</a> you can just use Unity3D and its compiler.
+Or use your VisualStudio installation in combination with <a href="http://unityvs.com">Visual Studio Tools for Unity</a> to compile a DLL-file, which
+can be included into your project.</p>
+
+<h3>
+<a name="using-unity3d" class="anchor" href="#using-unity3d"><span class="octicon octicon-link"></span></a>Using Unity3D</h3>
+
+<ul>
+<li>Clone the repository</li>
+<li>Copy the files from <code>Assets\NeoCollections</code> into your project</li>
+</ul>
+
+<h3>
+<a name="using-visualstudio" class="anchor" href="#using-visualstudio"><span class="octicon octicon-link"></span></a>Using VisualStudio</h3>
+
+<ul>
+<li>Clone the repository</li>
+<li>Open the folder as a Unity3D project</li>
+<li>Install the <em>free</em> <a href="https://www.assetstore.unity3d.com/#/content/13802">Unity Testing Tools</a> from the AssetStore</li>
+<li>Install the <em>free</em> <a href="http://unityvs.com">Visual Studio Tools for Unity</a> and import its Unity-package</li>
+<li>Open <code>UnityVS.NeoCollections.sln</code>
+</li>
+<li><a href="http://forum.unity3d.com/threads/video-tutorial-how-to-use-visual-studio-for-all-your-unity-development.120327">Build a DLL-File</a></li>
+<li>Import the DLL into your Unity3D project</li>
+</ul>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="array-extensions" class="anchor" href="#array-extensions"><span class="octicon octicon-link"></span></a>Array Extensions</h3>
+
+<p>For convenience the default Array classes are extended to directly iterate over them:</p>
+
+<pre><code>var someStrings = new string[]{"Here", "are", "some", "strings"};
+
+// Without NeoCollections
+foreach(var s in someStrings){
+  UnityEngine.Debug.Log(s);
+}
+
+// With NeoCollections
+someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));
+
+// or even shorter as you can provide the called function
+// as a reference
+someStrings.ForEach(UnityEngine.Debug.Log);
+</code></pre>
+
+<h3>
+<a name="standard-collection-classes" class="anchor" href="#standard-collection-classes"><span class="octicon octicon-link"></span></a>Standard collection classes</h3>
+
+<p>The library contains improved subclasses of the most common standard generic collection classes:</p>
+
+<ul>
+<li>Dictionary</li>
+<li>List</li>
+<li>NameValueCollection</li>
+<li>Queue</li>
+<li>Set</li>
+<li>Stack</li>
+</ul>
+
+<pre><code>// Without NeoCollections
+using System.Collections.Generic;
+
+var someStrings = new List&lt;string&gt;(){"Here", "are", "some", "strings"};
+
+foreach(var s in someStrings){
+  UnityEngine.Debug.Log(s);
+}
+
+// With NeoCollections
+using Neo.Collections;
+
+var someStrings = new List&lt;string&gt;(){"Here", "are", "some", "strings"};
+
+someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));
+</code></pre>
+
+<h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<p>You can run the tests using the offical <a href="https://www.assetstore.unity3d.com/#/content/13802">Unity Testing Tools</a>. Just install the Unity package and use the <a href="http://www.tallior.com/introduction-to-unity-test-tools/">Unit Test Runner</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jnbt">jnbt</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
