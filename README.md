@@ -32,7 +32,7 @@ can be included into your project.
 
 For convenience the default Array classes are extended to directly iterate over them:
 
-```
+```csharp
 var someStrings = new string[]{"Here", "are", "some", "strings"};
 
 // Without NeoCollections
@@ -58,7 +58,7 @@ The library contains improved subclasses of the most common standard generic col
 * Set
 * Stack
 
-```
+```csharp
 // Without NeoCollections
 using System.Collections.Generic;
 
