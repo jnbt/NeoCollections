@@ -74,20 +74,20 @@ can be included into your project.</p>
 
 <p>For convenience the default Array classes are extended to directly iterate over them:</p>
 
-<pre><code>var someStrings = new string[]{"Here", "are", "some", "strings"};
+<div class="highlight highlight-csharp"><pre><span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]{</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
 
-// Without NeoCollections
-foreach(var s in someStrings){
-  UnityEngine.Debug.Log(s);
-}
+<span class="c1">// Without NeoCollections</span>
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">s</span> <span class="k">in</span> <span class="n">someStrings</span><span class="p">){</span>
+  <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
 
-// With NeoCollections
-someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));
+<span class="c1">// With NeoCollections</span>
+<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
 
-// or even shorter as you can provide the called function
-// as a reference
-someStrings.ForEach(UnityEngine.Debug.Log);
-</code></pre>
+<span class="c1">// or even shorter as you can provide the called function</span>
+<span class="c1">// as a reference</span>
+<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">);</span>
+</pre></div>
 
 <h3>
 <a name="standard-collection-classes" class="anchor" href="#standard-collection-classes"><span class="octicon octicon-link"></span></a>Standard collection classes</h3>
@@ -103,22 +103,22 @@ someStrings.ForEach(UnityEngine.Debug.Log);
 <li>Stack</li>
 </ul>
 
-<pre><code>// Without NeoCollections
-using System.Collections.Generic;
+<div class="highlight highlight-csharp"><pre><span class="c1">// Without NeoCollections</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 
-var someStrings = new List&lt;string&gt;(){"Here", "are", "some", "strings"};
+<span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
 
-foreach(var s in someStrings){
-  UnityEngine.Debug.Log(s);
-}
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">s</span> <span class="k">in</span> <span class="n">someStrings</span><span class="p">){</span>
+  <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
 
-// With NeoCollections
-using Neo.Collections;
+<span class="c1">// With NeoCollections</span>
+<span class="k">using</span> <span class="nn">Neo.Collections</span><span class="p">;</span>
 
-var someStrings = new List&lt;string&gt;(){"Here", "are", "some", "strings"};
+<span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
 
-someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));
-</code></pre>
+<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+</pre></div>
 
 <h2>
 <a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
