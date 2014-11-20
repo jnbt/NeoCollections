@@ -178,6 +178,29 @@ namespace Tests.Neo.Collections{
     }
 
     [Test]
+    public void HasItemAt(){
+      List<object> empty = new List<object>();
+      Assert.IsFalse(empty.HasItemAt(0));
+      Assert.IsFalse(empty.HasItemAt(-1));
+      Assert.IsFalse(empty.HasItemAt(1));
+
+      empty.Add("something");
+      Assert.IsTrue(empty.HasItemAt(0));
+      Assert.IsFalse(empty.HasItemAt(-1));
+      Assert.IsFalse(empty.HasItemAt(1));
+
+      empty.Add("moreover");
+      Assert.IsTrue(empty.HasItemAt(0));
+      Assert.IsFalse(empty.HasItemAt(-1));
+      Assert.IsTrue(empty.HasItemAt(1));
+
+      empty[0] = null;
+      Assert.IsFalse(empty.HasItemAt(0));
+      Assert.IsFalse(empty.HasItemAt(-1));
+      Assert.IsTrue(empty.HasItemAt(1));
+    }
+
+    [Test]
     public void OperatorPlus(){
       List<int> one   = new List<int>(){1,2,3};
       List<int> two   = new List<int>(){4,5};

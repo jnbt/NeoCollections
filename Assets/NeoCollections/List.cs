@@ -202,6 +202,15 @@ namespace Neo.Collections {
     }
 
     /// <summary>
+    /// Checks if a non-null value is present at the index
+    /// </summary>
+    /// <param name="index">to be checked</param>
+    /// <returns>True if a non-null exists at the index</returns>
+    public bool HasItemAt(int index) {
+      return (index >= 0) && (Count - 1 >= index) && (this[index] != null);
+    }
+
+    /// <summary>
     /// Builds a new combined list. 
     /// </summary>
     /// <param name="one">first members in new list</param>
