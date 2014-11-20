@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\NeoCollections\ArrayExtensions.cs" />
+    <Compile Include="Assets\NeoCollections\AssemblyInfo.cs" />
     <Compile Include="Assets\NeoCollections\Dictionary.cs" />
     <Compile Include="Assets\NeoCollections\ICollection.cs" />
     <Compile Include="Assets\NeoCollections\IComparer.cs" />
