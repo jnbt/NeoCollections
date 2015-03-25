@@ -29,23 +29,29 @@
       </header>
       <section>
         <h1>
-<a name="neocollections-a-class-library-for-aot-safe-collection-for-unity3d" class="anchor" href="#neocollections-a-class-library-for-aot-safe-collection-for-unity3d"><span class="octicon octicon-link"></span></a>NeoCollections: A class library for AOT-safe collection for <code>Unity3D</code>
+<a id="neocollections-a-class-library-for-aot-safe-collections-for-unity3d" class="anchor" href="#neocollections-a-class-library-for-aot-safe-collections-for-unity3d" aria-hidden="true"><span class="octicon octicon-link"></span></a>NeoCollections: A class library for (AOT-safe) collections for <code>Unity3D</code>
 </h1>
 
-<p>NeoCollections is a simple class library which allows AOT-safe iterations in <a href="http://unity3d.com">Unity3D</a>. This may sound strange as
+<hr>
+
+<p><strong>03/25/2015:</strong> Unity now supports the new IL2CPP compiler for iOS the bug regarding the AOT compilation of generic interfaces went away. Just update NeoCollections to get rid of the overhead introduced to circumvent the AOT-bug.</p>
+
+<hr>
+
+<p>NeoCollections is a legacy class library which allowed AOT-safe iterations in <a href="http://unity3d.com">Unity3D</a>. This may sound strange as
 <a href="http://www.mono-project.com">Mono</a> / <code>C#</code> supports standard collection classes and the famous <code>foreach</code> loop, but
 these feature sometime break on iOS. (Further information about this can be found <a href="http://forum.unity3d.com/threads/system-string-doesnt-implement-interface-system-collections-ienumerator-crash.168019/">here</a>
 and <a href="http://www.makegamessa.com/discussion/1493/its-official-foreach-is-bad-in-unity/p1">here</a>).</p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>If you don't have access to <a href="http://msdn.microsoft.com/de-de/vstudio">Microsoft VisualStudio</a> you can just use Unity3D and its compiler.
 Or use your VisualStudio installation in combination with <a href="http://unityvs.com">Visual Studio Tools for Unity</a> to compile a DLL-file, which
 can be included into your project.</p>
 
 <h3>
-<a name="using-unity3d" class="anchor" href="#using-unity3d"><span class="octicon octicon-link"></span></a>Using Unity3D</h3>
+<a id="using-unity3d" class="anchor" href="#using-unity3d" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Unity3D</h3>
 
 <ul>
 <li>Clone the repository</li>
@@ -53,7 +59,7 @@ can be included into your project.</p>
 </ul>
 
 <h3>
-<a name="using-visualstudio" class="anchor" href="#using-visualstudio"><span class="octicon octicon-link"></span></a>Using VisualStudio</h3>
+<a id="using-visualstudio" class="anchor" href="#using-visualstudio" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using VisualStudio</h3>
 
 <ul>
 <li>Clone the repository</li>
@@ -67,30 +73,29 @@ can be included into your project.</p>
 </ul>
 
 <h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <h3>
-<a name="array-extensions" class="anchor" href="#array-extensions"><span class="octicon octicon-link"></span></a>Array Extensions</h3>
+<a id="array-extensions" class="anchor" href="#array-extensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array Extensions</h3>
 
 <p>For convenience the default Array classes are extended to directly iterate over them:</p>
 
-<div class="highlight highlight-csharp"><pre><span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">string</span><span class="p">[]{</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
+<div class="highlight highlight-csharp"><pre><span class="pl-k">var</span> someStrings = <span class="pl-k">new</span> <span class="pl-k">string</span>[]{<span class="pl-s"><span class="pl-pds">"</span>Here<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>are<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>some<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>strings<span class="pl-pds">"</span></span>};
 
-<span class="c1">// Without NeoCollections</span>
-<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">s</span> <span class="k">in</span> <span class="n">someStrings</span><span class="p">){</span>
-  <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="pl-c">// Without NeoCollections</span>
+<span class="pl-k">foreach</span>(<span class="pl-k">var</span> s <span class="pl-k">in</span> someStrings){
+  UnityEngine.Debug.Log(s);
+}
 
-<span class="c1">// With NeoCollections</span>
-<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<span class="pl-c">// With NeoCollections</span>
+someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));
 
-<span class="c1">// or even shorter as you can provide the called function</span>
-<span class="c1">// as a reference</span>
-<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">);</span>
-</pre></div>
+<span class="pl-c">// or even shorter as you can provide the called function</span>
+<span class="pl-c">// as a reference</span>
+someStrings.ForEach(UnityEngine.Debug.Log);</pre></div>
 
 <h3>
-<a name="standard-collection-classes" class="anchor" href="#standard-collection-classes"><span class="octicon octicon-link"></span></a>Standard collection classes</h3>
+<a id="standard-collection-classes" class="anchor" href="#standard-collection-classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Standard collection classes</h3>
 
 <p>The library contains improved subclasses of the most common standard generic collection classes:</p>
 
@@ -103,25 +108,24 @@ can be included into your project.</p>
 <li>Stack</li>
 </ul>
 
-<div class="highlight highlight-csharp"><pre><span class="c1">// Without NeoCollections</span>
-<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<div class="highlight highlight-csharp"><pre><span class="pl-c">// Without NeoCollections</span>
+<span class="pl-k">using</span> System.Collections.Generic;
 
-<span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
+<span class="pl-k">var</span> someStrings = <span class="pl-k">new</span> List&lt;<span class="pl-k">string</span>&gt;(){<span class="pl-s"><span class="pl-pds">"</span>Here<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>are<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>some<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>strings<span class="pl-pds">"</span></span>};
 
-<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">s</span> <span class="k">in</span> <span class="n">someStrings</span><span class="p">){</span>
-  <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="pl-k">foreach</span>(<span class="pl-k">var</span> s <span class="pl-k">in</span> someStrings){
+  UnityEngine.Debug.Log(s);
+}
 
-<span class="c1">// With NeoCollections</span>
-<span class="k">using</span> <span class="nn">Neo.Collections</span><span class="p">;</span>
+<span class="pl-c">// With NeoCollections</span>
+<span class="pl-k">using</span> Neo.Collections;
 
-<span class="kt">var</span> <span class="n">someStrings</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;(){</span><span class="s">"Here"</span><span class="p">,</span> <span class="s">"are"</span><span class="p">,</span> <span class="s">"some"</span><span class="p">,</span> <span class="s">"strings"</span><span class="p">};</span>
+<span class="pl-k">var</span> someStrings = <span class="pl-k">new</span> List&lt;<span class="pl-k">string</span>&gt;(){<span class="pl-s"><span class="pl-pds">"</span>Here<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>are<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>some<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>strings<span class="pl-pds">"</span></span>};
 
-<span class="n">someStrings</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
-</pre></div>
+someStrings.ForEach(s =&gt; UnityEngine.Debug.Log(s));</pre></div>
 
 <h2>
-<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h2>
 
 <p>You can run the tests using the offical <a href="https://www.assetstore.unity3d.com/#/content/13802">Unity Testing Tools</a>. Just install the Unity package and use the <a href="http://www.tallior.com/introduction-to-unity-test-tools/">Unit Test Runner</a>.</p>
       </section>
