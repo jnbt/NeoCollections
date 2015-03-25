@@ -164,17 +164,6 @@ namespace Tests.Neo.Collections{
     }
 
     [Test]
-    public void WorksWithIterator(){
-      Set<int> subject = new Set<int>(){1,2,3};
-      System.Collections.Generic.List<int> called = new System.Collections.Generic.List<int>(4);
-      global::Neo.Collections.Iterator.ForEach<int>(subject, called.Add);
-      Assert.AreEqual(1, called[0]);
-      Assert.AreEqual(2, called[1]);
-      Assert.AreEqual(3, called[2]);
-      Assert.AreEqual(3, called.Count);
-    }
-
-    [Test]
     public void Find(){
       Set<int> subject = new Set<int>(){1,2,3};
       int found = subject.Find((item) => {

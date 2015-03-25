@@ -1,6 +1,12 @@
-# NeoCollections: A class library for AOT-safe collection for `Unity3D`
+# NeoCollections: A class library for (AOT-safe) collections for `Unity3D`
 
-NeoCollections is a simple class library which allows AOT-safe iterations in [Unity3D](http://unity3d.com). This may sound strange as
+---
+
+**03/25/2015:** Unity now supports the new IL2CPP compiler for iOS the bug regarding the AOT compilation of generic interfaces went away. Just update NeoCollections to get rid of the overhead introduced to circumvent the AOT-bug.
+
+---
+
+NeoCollections is a legacy class library which allowed AOT-safe iterations in [Unity3D](http://unity3d.com). This may sound strange as
 [Mono](http://www.mono-project.com) / `C#` supports standard collection classes and the famous `foreach` loop, but
 these feature sometime break on iOS. (Further information about this can be found [here](http://forum.unity3d.com/threads/system-string-doesnt-implement-interface-system-collections-ienumerator-crash.168019/)
 and [here](http://www.makegamessa.com/discussion/1493/its-official-foreach-is-bad-in-unity/p1)).

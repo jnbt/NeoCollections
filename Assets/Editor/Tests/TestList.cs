@@ -134,17 +134,6 @@ namespace Tests.Neo.Collections{
     }
 
     [Test]
-    public void WorksWithIterator(){
-      List<int> list = new List<int>(){1,2,3};
-      System.Collections.Generic.List<int> called = new System.Collections.Generic.List<int>(3);
-      global::Neo.Collections.Iterator.ForEach<int>(list, called.Add);
-      Assert.AreEqual(1, called[0]);
-      Assert.AreEqual(2, called[1]);
-      Assert.AreEqual(3, called[2]);
-      Assert.AreEqual(3, called.Count);
-    }
-
-    [Test]
     public void First(){
       List<int> empty = new List<int>(0);
       Assert.AreEqual(0, empty.Last);

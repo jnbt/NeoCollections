@@ -1,90 +1,166 @@
 using System;
 
-namespace Neo.Collections{
-  public class Stack<T> : ICollection<T>{
+namespace Neo.Collections {
+  /// <summary>
+  /// A generic implementation of a stack
+  /// </summary>
+  /// <typeparam name="T">of items</typeparam>
+  public class Stack<T> : ICollection<T> {
     private readonly List<T> list;
 
-    public Stack(){
+    /// <summary>
+    /// Instantiate a new stack with default capacity
+    /// </summary>
+    public Stack() {
       list = new List<T>();
     }
-    public Stack(int capacity){
+
+    /// <summary>
+    /// Instiantiate a new stack with desired capacity
+    /// </summary>
+    /// <param name="capacity">to use</param>
+    public Stack(int capacity) {
       list = new List<T>(capacity);
     }
+
+    /// <summary>
+    /// Instiate a new stack using all members of the given IEnumerable
+    /// </summary>
+    /// <param name="initial">to use as initial members</param>
     public Stack(System.Collections.Generic.IEnumerable<T> initial) {
       list = new List<T>(initial);
     }
 
-    //This is a push operation
-    public void Add(T item){
+    /// <summary>
+    /// Push a new item onto the stack
+    /// </summary>
+    /// <param name="item">to be pushed to the stack</param>
+    public void Add(T item) {
       list.Insert(0, item);
     }
 
-    //This is NOT a Pop operation
-    public bool Remove(T item){
+    /// <summary>
+    /// Removes the first occurance of the item from the queue. (This is NOT a pop operation)
+    /// </summary>
+    /// <param name="item">to be removed</param>
+    /// <returns>true if the item was a member</returns>
+    public bool Remove(T item) {
       return list.Remove(item);
     }
 
-    public T Peek{
-      get{
+    /// <summary>
+    /// Peeks the top of the stack
+    /// </summary>
+    public T Peek {
+      get {
         if(Count > 0) return list[0];
         else return default(T);
       }
     }
 
-    public T Pop(){
-      if(Count > 0){
+    /// <summary>
+    /// Pops the top item from the stack
+    /// </summary>
+    /// <returns>the former top item</returns>
+    public T Pop() {
+      if(Count > 0) {
         T item = list[0];
         list.RemoveAt(0);
         return item;
       } else return default(T);
     }
 
-    public int Count{
-      get{ return list.Count; }
+    /// <summary>
+    /// Number of members in the stack
+    /// </summary>
+    public int Count {
+      get { return list.Count; }
     }
 
-    public int Capacity{
-      get{ return list.Capacity; }
+    /// <summary>
+    /// Current capacity of the stack
+    /// </summary>
+    public int Capacity {
+      get { return list.Capacity; }
     }
 
-    public bool IsReadOnly{
-      get{ return false; }
+    /// <summary>
+    /// True if it's a readonly collection
+    /// </summary>
+    public bool IsReadOnly {
+      get { return false; }
     }
 
-    public void ForEach(Action<T> func){
+    /// <summary>
+    /// Iterates over the members
+    /// </summary>
+    /// <param name="func">to be called per member</param>
+    public void ForEach(Action<T> func) {
       list.ForEach(func);
     }
 
-    public void ForEach(Action<T,int> func){
+    /// <summary>
+    /// Iterates over the members and their indexes
+    /// </summary>
+    /// <param name="func">to be called per member and index</param>
+    public void ForEach(Action<T, int> func) {
       list.ForEach(func);
     }
 
-    public void Clear(){
+    /// <summary>
+    /// Clears the whole stack
+    /// </summary>
+    public void Clear() {
       list.Clear();
     }
 
-    public bool Contains(T item){
+    /// <summary>
+    /// Detects if the stack contains the item
+    /// </summary>
+    /// <param name="item">to be looked up</param>
+    /// <returns>true if the item is a member</returns>
+    public bool Contains(T item) {
       return list.Contains(item);
     }
 
-    public void CopyTo(T[] array, int index){
+    /// <summary>
+    /// Copies the content into an array started at the index
+    /// </summary>
+    /// <param name="array">target array</param>
+    /// <param name="index">to start at</param>
+    public void CopyTo(T[] array, int index) {
       list.CopyTo(array, index);
     }
 
-    public void CopyTo(T[] array){
+    /// <summary>
+    /// Copies the content into an array
+    /// </summary>
+    /// <param name="array">target array</param>
+    public void CopyTo(T[] array) {
       list.CopyTo(array);
     }
 
-    System.Collections.Generic.IEnumerator<T> System.Collections.Generic.IEnumerable<T>.GetEnumerator(){
+    /// <summary>
+    /// Returns an enumerator, in index order, that can be used to iterate over the stack
+    /// </summary>
+    /// <returns>An enumerator for the list</returns>
+    System.Collections.Generic.IEnumerator<T> System.Collections.Generic.IEnumerable<T>.GetEnumerator() {
       return list.GetEnumerator();
     }
 
-    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator(){
+    /// <summary>
+    /// Returns an enumerator, in index order, that can be used to iterate over the queue
+    /// </summary>
+    /// <returns>An enumerator for the list</returns>
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
       return (list as System.Collections.IEnumerable).GetEnumerator();
     }
 
-    public bool IsEmpty{
-      get{ return Count == 0; }
+    /// <summary>
+    /// Is the collection empty?
+    /// </summary>
+    public bool IsEmpty {
+      get { return Count == 0; }
     }
   }
 }

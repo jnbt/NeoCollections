@@ -8,11 +8,24 @@ namespace Neo.Collections {
   /// </summary>
   /// <typeparam name="T"></typeparam>
   public class List<T> : System.Collections.Generic.List<T>, IList<T> {
+    /// <summary>
+    /// Instantiate a new list with default capacity
+    /// </summary>
     public List() : base() { }
+
+    /// <summary>
+    /// Instiantiate a new list with desired capacity
+    /// </summary>
+    /// <param name="capacity">to use</param>
     public List(int capacity) : base(capacity) { }
-    public List(System.Collections.Generic.IEnumerable<T> initial)
-      : base() {
-      Iterator.ForEach<T>(initial, (item) => Add(item));
+
+    /// <summary>
+    /// Instiate a new list using all members of the given IEnumerable
+    /// </summary>
+    /// <param name="initial">to use as initial members</param>
+    public List(System.Collections.Generic.IEnumerable<T> initial) : base() {
+      System.Collections.Generic.IEnumerator<T> enumerator = initial.GetEnumerator();
+      while(enumerator.MoveNext()) Add(enumerator.Current);
     }
 
     /// <summary>
@@ -23,7 +36,7 @@ namespace Neo.Collections {
     /// </remarks>
     /// <param name="func">to be called per member</param>
     public new void ForEach(Action<T> func) {
-      Iterator.ForEach<T>(this as System.Collections.Generic.List<T>, func);
+      for(int i = 0, imax = Count; i < imax; i++) func(this[i]);
     }
 
     /// <summary>
@@ -34,7 +47,7 @@ namespace Neo.Collections {
     /// </remarks>
     /// <param name="func">to be called per member with it's index</param>
     public void ForEach(Action<T, int> func) {
-      Iterator.ForEach<T>(this as System.Collections.Generic.List<T>, func);
+      for(int i = 0, imax = Count; i < imax; i++) func(this[i], i);
     }
 
     /// <summary>
