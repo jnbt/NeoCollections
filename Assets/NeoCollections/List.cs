@@ -3,8 +3,7 @@ using System.Text;
 
 namespace Neo.Collections {
   /// <summary>
-  /// This subclasses the default generic list class but overwrite a lot of iOS unsafe
-  /// methods, which can fail because of the AOT compilation
+  /// This subclasses the default generic list class
   /// </summary>
   /// <typeparam name="T"></typeparam>
   public class List<T> : System.Collections.Generic.List<T>, IList<T> {
@@ -42,9 +41,6 @@ namespace Neo.Collections {
     /// <summary>
     /// Iterates over the collection and calls the func for each member
     /// </summary>
-    /// <remarks>
-    /// This must be a hard override as the native ForEach function might break on iOS after AOT compilation
-    /// </remarks>
     /// <param name="func">to be called per member with it's index</param>
     public void ForEach(Action<T, int> func) {
       for(int i = 0, imax = Count; i < imax; i++) func(this[i], i);
@@ -69,9 +65,6 @@ namespace Neo.Collections {
     /// <summary>
     /// Returns a new list which all members which match the predicate.
     /// </summary>
-    /// <remarks>
-    /// This must be a hard override as the native ForEach function might break on iOS after AOT compilation
-    /// </remarks>
     /// <param name="func">to check each member with it's index</param>
     /// <returns>a filtered list</returns>
     public List<T> FindAll(Func<T, int, bool> func) {
@@ -93,9 +86,7 @@ namespace Neo.Collections {
     /// <returns>a converted list</returns>
     public new List<TOutput> ConvertAll<TOutput>(System.Converter<T, TOutput> converter) {
       List<TOutput> converted = new List<TOutput>(Count);
-      ForEach((item) => {
-        converted.Add(converter(item));
-      });
+      for(int i = 0, imax = Count; i < imax; i++) converted.Add(converter(this[i]));
       return converted;
     }
 

@@ -1,7 +1,7 @@
 using System;
 
 /// <summary>
-/// Extends all Array base clases for a iOS safe iteration function ForEach
+/// Extends all array base classes with iteration function ForEach
 /// </summary>
 /// <remarks>
 /// This file as intentionally no namespace as the extensions methods will be loaded GLOBALLY
