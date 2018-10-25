@@ -134,4 +134,96 @@ public static class ArrayExtensions {
   public static void ForEach(this char[] array, Action<char, int> func) {
     for(int i = 0, imax = array.Length; i < imax; i++) func(array[i], i);
   }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <returns>The all.</returns>
+  /// <param name="array">Array.</param>
+  /// <param name="func">Func.</param>
+  /// <typeparam name="T">The type of the array</typeparam>
+  /// <typeparam name="TOutput">The converter's result</typeparam>
+  public static TOutput[] ConvertAll<T,TOutput>(this T[] array, Func<T, TOutput> func) where T : class {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this int[] array, Func<int, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this long[] array, Func<long, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this float[] array, Func<float, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this double[] array, Func<double, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this bool[] array, Func<bool, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
+
+  /// <summary>
+  /// Returns a new array by converting each member using the converter
+  /// </summary>
+  /// <typeparam name="TOutput">of converter's result</typeparam>
+  /// <param name="array">to be converted</param>
+  /// <param name="func">to convert each member</param>
+  /// <returns>a converted array</returns>
+  public static TOutput[] ConvertAll<TOutput>(this char[] array, Func<char, TOutput> func) {
+    TOutput[] o = new TOutput[array.Length];
+    for(int i = 0, imax = array.Length; i < imax; i++) o[i] = func(array[i]);
+    return o;
+  }
 }
