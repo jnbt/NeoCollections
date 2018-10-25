@@ -13,24 +13,26 @@ and [here](http://www.makegamessa.com/discussion/1493/its-official-foreach-is-ba
 
 ## Installation
 
-If you don't have access to [Microsoft VisualStudio](http://msdn.microsoft.com/de-de/vstudio) you can just use Unity3D and its compiler.
-Or use your VisualStudio installation in combination with [Visual Studio Tools for Unity](http://unityvs.com) to compile a DLL-file, which
-can be included into your project.
+You can either use to copy the source files of this project into your Unity3D project or use Visual Studio to compile a DLL-file to be included in your project.
 
 ### Using Unity3D
 
 * Clone the repository
 * Copy the files from `Assets\NeoCollections` into your project
+  * This folder also includes an Assembly definition file
 
 ### Using VisualStudio
 
 * Clone the repository
 * Open the folder as a Unity3D project
-* Install the *free* [Unity Testing Tools](https://www.assetstore.unity3d.com/#/content/13802) from the AssetStore
-* Install the *free* [Visual Studio Tools for Unity](http://unityvs.com) and import its Unity-package
-* Open `UnityVS.NeoCollections.sln`
-* [Build a DLL-File](http://forum.unity3d.com/threads/video-tutorial-how-to-use-visual-studio-for-all-your-unity-development.120327)
-* Import the DLL into your Unity3D project
+* Build the solution using "Build -> Build NeoNetwork"
+* Import the DLL (`obj/Release/NeoCollections.dll`) into your Unity3D project
+
+Hint: Unity currently always reset the LangVersion to "7.3" which isn't supported by Visual Studio. Therefor you need to manually
+set / revert the `LangVersion` to `6` in `NeoCollections.csproj`:
+
+    <LangVersion>6</LangVersion>
+
 
 ## Usage
 
@@ -57,6 +59,7 @@ someStrings.ForEach(UnityEngine.Debug.Log);
 ### Standard collection classes
 
 The library contains improved subclasses of the most common standard generic collection classes:
+
 * Dictionary
 * List
 * NameValueCollection
