@@ -1,11 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoCollections.CSharp.Editor", "NeoCollections.CSharp.Editor.csproj", "{A037FA73-BF9F-55D5-C1BE-548050AD3544}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{FA6B1F0C-583F-9A99-80F3-A5A05D77B196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoCollections.CSharp", "NeoCollections.CSharp.csproj", "{42D6A4AC-F333-F324-7747-709D69ED5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeoCollections", "NeoCollections.csproj", "{FD78CF69-26F6-3DF8-CD72-ABBDA8FD1938}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +11,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A037FA73-BF9F-55D5-C1BE-548050AD3544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A037FA73-BF9F-55D5-C1BE-548050AD3544}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A037FA73-BF9F-55D5-C1BE-548050AD3544}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A037FA73-BF9F-55D5-C1BE-548050AD3544}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42D6A4AC-F333-F324-7747-709D69ED5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42D6A4AC-F333-F324-7747-709D69ED5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42D6A4AC-F333-F324-7747-709D69ED5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42D6A4AC-F333-F324-7747-709D69ED5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA6B1F0C-583F-9A99-80F3-A5A05D77B196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA6B1F0C-583F-9A99-80F3-A5A05D77B196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA6B1F0C-583F-9A99-80F3-A5A05D77B196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA6B1F0C-583F-9A99-80F3-A5A05D77B196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD78CF69-26F6-3DF8-CD72-ABBDA8FD1938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD78CF69-26F6-3DF8-CD72-ABBDA8FD1938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD78CF69-26F6-3DF8-CD72-ABBDA8FD1938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD78CF69-26F6-3DF8-CD72-ABBDA8FD1938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.TabWidth = 2
+		$1.TabsToSpaces = True
+		$1.IndentWidth = 2
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.scope = text/x-csharp
 	EndGlobalSection
 EndGlobal
