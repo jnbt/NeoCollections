@@ -23,15 +23,4 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.TabWidth = 2
-		$1.TabsToSpaces = True
-		$1.IndentWidth = 2
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.scope = text/x-csharp
-	EndGlobalSection
 EndGlobal
