@@ -10,3 +10,5 @@ UnityVS.NeoCollections.CSharp.csproj
 UnityVS.NeoCollections.CSharp.Editor.csproj
 UnityVS.NeoCollections.sln
 /Logs
+.vs
+.idea
